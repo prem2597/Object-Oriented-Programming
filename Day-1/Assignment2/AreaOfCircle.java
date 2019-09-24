@@ -14,7 +14,6 @@ public class AreaOfCircle {
      * @param radius, the radius of the circle
      * @return the area of the circle
      */
-    float radius = 5.0;
     public static double areaOfCircle(double radius) {
         //  Your code goes here....
 
