@@ -1,0 +1,5 @@
+{
+    "checkstyle.checkstylePath": "/home/prem/jarfiles/sun_checks.xml",
+    "java.checkstyle.configuration": "/home/prem/jarfiles/sun_checks.xml",
+    "java.checkstyle.version": "8.24"
+}

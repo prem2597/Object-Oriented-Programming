@@ -37,8 +37,20 @@ public class Stats {
      */
     public static double mean(int[] arr) {
         //  Your code goes here....
+        double sum = 0;
+        if (arr.length!=0) {
+            for (int i = 0; i < arr.length; i++) {
+                sum = sum + arr[i];
+            }
+            int l = arr.length;
+            
+            return (double) (sum/l);
 
-        return 0.0;
+        }
+        else {
+            return 0;
+        }
+
     }
 
     /**
@@ -47,13 +59,27 @@ public class Stats {
      * 
      * Hint : Arrays.sort(arr) sorts the elements of the array.
      * 
-     * @param arr, the input array contains random elements (not in sorted order)
+     * @param arr  the input array contains random elements (not in sorted order
      * @return the median of the elements of the array.
      */
     public static double median(int[] arr) {
         //  Your code goes here...
-
-        return 0.0;
+        int l = arr.length;
+        int temp = 0;
+        for ( int i = 0; i < l; i++) {
+            for ( int j = i + 1; j < l; j++) {
+                if ( arr[i] > arr[j] ) {
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        if (l % 2 != 0) {
+            return (double) arr[l/2];
+        } else {
+            return (double) ((arr[l/2] + arr[l/2 - 1])/2.0);
+        }
     }
 
     /**
@@ -65,8 +91,26 @@ public class Stats {
      */
     public static int mode(int[] arr) {
         //  Your code goes here....
+        int maxValue = arr[0] ;
+        int maxCount = 0 ;
+        for (int i = 0; i < arr.length; ++i) {
+            int count = 0 ;
+            for (int j = 0; j < arr.length; ++j) {
+                if (arr[j] == arr[i]) {
+                    count = count + 1 ; 
+                }
+                if (count > maxCount) {
+                    maxCount = count ;
+                    maxValue = arr[i] ;
+                }
+            }
+        }
+        if (maxCount == 1) {
+            return 0 ;
+        }else {
+            return maxValue ;
+        }
 
-        return 0;
     }
 
     /**
@@ -78,8 +122,11 @@ public class Stats {
      */
     public static double variance(int[] arr) {
         //  Your code goes here....
-
-        return 0.0;
+        double var = 0.0 ;
+        for(int i = 0 ; i < arr.length ; i++){
+            var += (arr[i] - mean(arr)) * (arr[i] - mean(arr)) ;
+        }
+        return var/arr.length ;   
     }
 
     /**
@@ -91,6 +138,9 @@ public class Stats {
     public static double standardDeviation(int[] arr) {
         //  Your code goes here....
 
-        return 0.0;
+        double varianc = variance(arr);
+        double standardDev = Math.sqrt(varianc);
+
+        return standardDev;
     }
 }
