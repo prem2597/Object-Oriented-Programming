@@ -8,10 +8,13 @@
   * @author Siva Sankar
  */
 //  Your code goes here... For Contact class
-public class Contact {
-    public String name;
-    public String email;
-    public String phone;
+class Contact {
+    private String name;
+    // name of the contact.
+    private String email;
+    // email of the contact.
+    private String phone;
+    // phone number of the contact.
     Contact(final String name, final String email, final String phone) {
         this.name = name;
         this.email = email;
@@ -28,10 +31,11 @@ public class Contact {
         return this.phone;
     }
     public String toString() {
-        return"{ Name = "+this.name +", Email = " +this.email+", Phone Number = " + this.phone + " }";
+        return "{ Name = " + this.name + ", Email = " + this.email
+        + ", Phone Number = " + this.phone + " }";
     }
     public void setName(final String toset) {
-        this.name= toset;
+        this.name = toset;
     }
     public void setEmail(final String toset) {
         this.email = toset;

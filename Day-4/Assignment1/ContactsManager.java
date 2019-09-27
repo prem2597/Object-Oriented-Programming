@@ -62,7 +62,7 @@ class ContactsManager {
     public Contact searchContact(String searchName) {
         //  Your code goes here....
         for(int i=0; i<friendsCount; i++) {
-            if(myFriends[i].name.equals(searchName)) {
+            if(myFriends[i].getName().equals(searchName)) {
                 return myFriends[i];
             }
         }
@@ -78,7 +78,7 @@ class ContactsManager {
     public Contact searchContactByEmail(String email) {
         //  Your code goes here....
         for(int i=0; i<friendsCount; i++) {
-            if(myFriends[i].email.equals(email)) {
+            if(myFriends[i].getEmail().equals(email)) {
                 return myFriends[i];
             }
         }
@@ -95,9 +95,9 @@ class ContactsManager {
     public boolean deleteContact(String searchName) {
         //  Your code goes here....
         for(int i=0; i<friendsCount; i++) {
-            if(myFriends[i].name.equals(searchName)) {
+            if(myFriends[i].getName().equals(searchName)) {
                 // myFriends[i] = null;
-                for(int j=i; j<friendsCount; j++) {
+                for(int j=i+1; j<friendsCount; j++) {
                     myFriends[i] = myFriends[j];
                 }
                 // myFriends.pop();
