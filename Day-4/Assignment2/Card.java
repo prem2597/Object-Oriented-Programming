@@ -18,7 +18,7 @@ class Card {
     }
     public String toString() {
         return "{ Title = " + this.title + ", Author = " + this.author
-        + ", Subject = " + this.subjet + " }" ;
+        + ", Subject = " + this.subject + " }" ;
     }
     public void setTitle(final String toset) {
         this.title = toset;
