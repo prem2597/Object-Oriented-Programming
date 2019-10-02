@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.Scanner;
 public class LibraryCardCatalog {
     Card [] cards;
     int cardCount = 0;
@@ -42,9 +43,77 @@ public class LibraryCardCatalog {
             }
         }
     }
+    public static Card[] sortByAuthor(Card[] card) {
+        Card temp;
+        int y=0;
+        for (int i=0; i<card.length; i++) {
+            for (int j=0;j<card.length; j++) {
+                if (card[j+1]==null) {
+                    y=1;
+                    break;
+                }
+                int x = card[j].getAuthor().compareTo(card[j+1].getAuthor());
+                if (x>0) {
+                    temp = card[j];
+                    card[j] = card[j+1];
+                    card[j+1] = temp;
+                }
+            }
+            if (y==1) {
+                break;
+            }
+        }
+        return card;
+    }
+    public static Card[] sortByTitle(Card[] card) {
+        Card temp;
+        int y=0;
+        for (int i=0; i<card.length; i++) {
+            for (int j=0;j<card.length; j++) {
+                if (card[j+1]==null) {
+                    y=1;
+                    break;
+                }
+                int x = card[j].getTitle().compareTo(card[j+1].getTitle());
+                if (x>0) {
+                    temp = card[j];
+                    card[j] = card[j+1];
+                    card[j+1] = temp;
+                }
+            }
+            if (y==1) {
+                break;
+            }
+        }
+        return card;
+    }
+    public static Card[] sortBySubject(Card[] card) {
+        Card temp;
+        int y=0;
+        for (int i=0; i<card.length; i++) {
+            for (int j=0;j<card.length; j++) {
+                if (card[j+1]==null) {
+                    y=1;
+                    break;
+                }
+                int x = card[j].getSubject().compareTo(card[j+1].getSubject());
+                if (x>0) {
+                    temp = card[j];
+                    card[j] = card[j+1];
+                    card[j+1] = temp;
+                }
+            }
+            if (y==1) {
+                break;
+            }
+        }
+        return card;
+    }
     public void printCatalog() {
+        // Card [] s = new Card[10];
         for (int i = 0; i<cardCount; i++) {
             if (this.cards[i] != null) {
+                // s[i] = cards[i];
                 System.out.println(cards[i]);
             }
         }
@@ -58,5 +127,11 @@ public class LibraryCardCatalog {
         aCard.addCard(secondCard);
         aCard.addCard(thirdCard);
         aCard.printCatalog();
+        // Scanner scan = new Scanner(System.in);
+        // System.out.println("Enter the title or author or subject to be sorted");
+        // String input = scan.next();
+        // if(input.equals("title")) {
+        //     aCard.sortByTitle(Card s);
+        // }
     }
 }

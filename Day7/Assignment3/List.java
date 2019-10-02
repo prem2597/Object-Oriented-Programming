@@ -43,7 +43,8 @@ public class List {
     // that's the job of the List constructor
 
     //  Your code goes here.....
-
+    private int [] arr;
+    private int size;
     /*
      * What are the other class variables needed for creating a list?
      * How about keeping track of the size of the list?
@@ -86,6 +87,8 @@ public class List {
         // That is the initial value to use for size.
 
         //  Your code goes here.....
+        size = 0;
+        arr = new int[10];
     }
     
     /*
@@ -102,6 +105,8 @@ public class List {
     public void add(int item) {
         //Inserts the specified element at the end of the list.
         //  Your code goes here.....
+        arr[size] = item;
+        size = size + 1;
     }
 
     /*
@@ -114,6 +119,7 @@ public class List {
     public int size() {
         // replace the code below to implement the size method
         //  Your code goes here.....
+        return size;
     }
 
     /*
@@ -140,6 +146,12 @@ public class List {
         // write the logic for remove here.
         // Think about what to do to the size variable.
         // Your code goes here.....
+        if (index <= size) {
+            for (int i=index; i<size ; i++) {
+                arr[i] = arr[i+1];
+            }
+            size = size - 1;
+        }
     }
 
     /*
@@ -156,6 +168,10 @@ public class List {
     public int get(int index) {
         // Replace the code below to write the code for get
         // Your code goes here.....
+        if(index <= size) {
+            return arr[index];
+        }
+        return -1;
     }
 
     /*
@@ -180,6 +196,8 @@ public class List {
      */
     public String toString() {
         // Your code goes here.....
+        String str="";
+        
     } 
     
     /*
