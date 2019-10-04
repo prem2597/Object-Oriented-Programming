@@ -197,7 +197,16 @@ public class List {
     public String toString() {
         // Your code goes here.....
         String str="";
-        
+        for (int i=0;i<=size-1;i++) {
+            if(i!=size-1) {
+                str =str + arr[i] + ",";
+            }
+            else {
+                str = str + arr[i];
+            }
+        }
+        str = "[" + str + "]";
+        return str;
     } 
     
     /*
@@ -208,6 +217,12 @@ public class List {
      */
     public boolean contains(int item) {
         // Your code goes here.....
+        for (int i=0; i<size ; i++) {
+            if(arr[i]==item) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /*
@@ -217,6 +232,12 @@ public class List {
      */
     public int indexOf(int item) {
         // Your code goes here.....
+        for (int i=0; i<size ; i++) {
+            if(arr[i]==item) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**

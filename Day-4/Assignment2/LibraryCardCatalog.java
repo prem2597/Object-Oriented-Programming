@@ -127,11 +127,5 @@ public class LibraryCardCatalog {
         aCard.addCard(secondCard);
         aCard.addCard(thirdCard);
         aCard.printCatalog();
-        // Scanner scan = new Scanner(System.in);
-        // System.out.println("Enter the title or author or subject to be sorted");
-        // String input = scan.next();
-        // if(input.equals("title")) {
-        //     aCard.sortByTitle(Card s);
-        // }
     }
 }
