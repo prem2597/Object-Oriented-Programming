@@ -59,7 +59,6 @@ public class SocialNetwork {
                     addConnection(userId[0],toUserId[i]);
                 }
                 // users[userId[0]] = s;
-                
             }
         }
         // return;
