@@ -38,22 +38,25 @@ public class SocialNetwork {
     public void createDataStructure(String str) {
         // TODO
         // Your code goes here
+        User[] userId = new User[10];
+        User[] toUserId = new User[10];
+        User[] connections = new User[10];
         if (str.length() > 0) {
-            String[] connections = str.split(";");
+            connections = str.split(";");
             for(int i=0; i < connections.length; i++) {
-                String[] userId = connections[i].split(" ");
+                userId = connections[i].split(" ");
                 if (searchUser(userId[0]) == false ) {
                     addUser(userId[0]);
                 }
-                String[] toUserId = userId[userId.length - 1].split(",");
+                toUserId = userId[userId.length - 1].split(",");
                 for (int i = 0; i < toUserId.length; i++) {
                     if (searchUser(toUserId[i]) == false ) {
                         addUser(toUserId[i]);
                     }
                 }
-                Set<String> s = new HashSet<String>();
+                // Set<String> s = new HashSet<String>();
                 for (int i = 0; i < toUserId.length; i++) {
-                    addConnection(userId[0],s);
+                    addConnection(userId[0],toUserId[i]);
                 }
                 // users[userId[0]] = s;
                 
