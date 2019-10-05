@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.Scanner;
 public class LibraryCardCatalog {
-    Card [] cards;
+    Card[] cards;
     int cardCount = 0;
 
     LibraryCardCatalog() {
