@@ -53,13 +53,13 @@ public class SocialNetwork {
                 }
                 Set<String> s = new HashSet<String>();
                 for (int i = 0; i < toUserId.length; i++) {
-                    addConnection(userId[0],toUserId[i]);
+                    addConnection(userId[0],s);
                 }
                 // users[userId[0]] = s;
                 
             }
         }
-        return;
+        // return;
     }
 
     private boolean searchUser(User user) {
