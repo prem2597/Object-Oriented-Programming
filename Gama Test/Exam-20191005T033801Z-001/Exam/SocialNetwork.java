@@ -38,30 +38,38 @@ public class SocialNetwork {
     public void createDataStructure(String str) {
         // TODO
         // Your code goes here
-        User[] userId = new User[10];
-        User[] toUserId = new User[10];
-        User[] connections = new User[10];
+        // User[] userId = new User[10];
+        // User[] toUserId = new User[10];
+        // User[] connections = new User[10];
+        User admin,collection;
         if (str.length() > 0) {
-            connections = str.split(";");
+            String[] connections = str.split(";");
             for(int i=0; i < connections.length; i++) {
-                userId = connections[i].split(" ");
-                if (searchUser(userId[0]) == false ) {
-                    addUser(userId[0]);
+                String[] userId = connections[i].split(" ");
+                // if (searchUser(userId[0]) == false ) {
+                //     addUser(userId[0]);
+                // }
+                admin = getUserName(userId[0]);
+                if (admin == null) {
+                    addUser(new User(userId[0],null));
+                    admin = getUserName(userId[0]);
                 }
-                toUserId = userId[userId.length - 1].split(",");
-                for (int i = 0; i < toUserId.length; i++) {
-                    if (searchUser(toUserId[i]) == false ) {
-                        addUser(toUserId[i]);
+                String[] toUserId = userId[userId.length - 1].split(",");
+                for (int j = 0; j < toUserId.length; j++) {
+                    if (getUser(collection[j]) == null) {
+                        collection = addUser(new User(collection[j],null));
+                        addUser(colletion);
+                        addConnection(admin,getUser(collection[j]));
                     }
                 }
                 // Set<String> s = new HashSet<String>();
-                for (int i = 0; i < toUserId.length; i++) {
-                    addConnection(userId[0],toUserId[i]);
-                }
+                // for (int j = 0; j < toUserId.length; j++) {
+                //     addConnection(userId[0],toUserId[i]);
+                // }
                 // users[userId[0]] = s;
             }
         }
-        // return;
+        return;
     }
 
     private boolean searchUser(User user) {
