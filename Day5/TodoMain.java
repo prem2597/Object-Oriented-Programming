@@ -20,6 +20,7 @@ final class TodoMain {
         Task task4 = new Task();
         Task task5 = new Task();
         Task task6 = new Task();
+
         try {
             Date date1 = sdf.parse("15/10/1997");
             Date date2 = sdf.parse("15/10/2015");
