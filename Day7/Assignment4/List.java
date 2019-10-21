@@ -157,7 +157,7 @@ public class List {
      * The method returns an int. Empty list should return 0.
      */
     public int size() {
-        
+        return size;
     }
 
     /*
@@ -199,7 +199,7 @@ public class List {
      * number of items in the list? Would size variable be useful?
      */
     public int get(int index) {
-
+        return index;
     }
 
     /*
@@ -241,7 +241,7 @@ public class List {
      * the item exists and otherwise false
      */
     public boolean contains(int item) {
-        
+        return true;
     }
 
     /*
@@ -250,7 +250,7 @@ public class List {
      * or -1 if this list does not contain the element.
      */
     public int indexOf(int item) {
-        
+        return item;
     }
 
 	public static void main(String[] args) {
