@@ -14,6 +14,7 @@ class MovieDb {
 
     public void setEasyMovies(final Movie easyMovies1) {
         this.easyMovies.add(easyMovies1);
+        
     }
 
     public ArrayList<Movie> getMediumMovies() {
