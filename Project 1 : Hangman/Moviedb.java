@@ -1,29 +1,34 @@
 import java.util.ArrayList;
-public class Moviedb {
-    private ArrayList<Movie> easy;
-    private ArrayList<Movie> medium;
-    private ArrayList<Movie> hard;
-    Moviedb() {
-        easy = new ArrayList<>();
-        medium = new ArrayList<>();
-        hard = new ArrayList<>();
+class MovieDatabase {
+    private ArrayList<Movie> easyMovies;
+    private ArrayList<Movie> mediumMovies;
+    private ArrayList<Movie> hardMovies;
+    MovieDatabase() {
+        easyMovies = new ArrayList<>();
+        mediumMovies = new ArrayList<>();
+        hardMovies = new ArrayList<>();
     }
-    public ArrayList<Movie> getEasy() {
-        return easy;
+    public ArrayList<Movie> getEasyMovies() {
+        return easyMovies;
     }
-    public void setEasy(final Movie easyMovies) {
-        this.easy.add(easyMovies);
+
+    public void setEasyMovies(final Movie easyMovies1) {
+        this.easyMovies.add(easyMovies1);
     }
-    public ArrayList<Movies> getMedium() {
-        return medium;
+
+    public ArrayList<Movie> getMediumMovies() {
+        return mediumMovies;
     }
-    public void setMedium(final Movie mediumMovies) {
-        this.medium.add(mediumMovies);
+
+    public void setMediumMovies(final Movie mediumMovies1) {
+        this.mediumMovies.add(mediumMovies1);
     }
-    public ArrayList<Movies> getHard() {
-        return hard;
+
+    public ArrayList<Movie> getHardMovies() {
+        return hardMovies;
     }
-    public void setHard(final Movie hardMovies) {
-        this.hard.add(hardMovies);
+
+    public void setHardMovies(final Movie hardMovies1) {
+        this.hardMovies.add(hardMovies1);
     }
 }

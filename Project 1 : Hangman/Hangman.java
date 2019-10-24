@@ -1,98 +1,100 @@
-import java.io.*;
-import java.util.*;
-import java.util.Scanner;
-import java.util.Random;
-import java.util.InputMismatchException;
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
-public class Hangman {
-    private Moviedb allMovies;
-    private Player[] allPlayers;
-    private String availableLetters;
-    private String usedLetters;
-    private char[] word;
-    Hangman(final int numberfPlayers) {
-        System.out.println("Welcome to Hangman");
-        allPlayers = new Player[numberOfPlayers];
-        allMovies = new Moviedb();
-    }
+import java.util.InputMismatchException;
+import java.util.Scanner;
+class Hangman {
+    private MovieDatabase moviesDatabase;
+    private Player[] players;
     public Player[] getPlayers() {
-        return allPlayers;
+        return players;
     }
-    public void setPlayers(final Player[] player1) {
-        this.allPlayers = player1;
+    public void setPlayers(final Player[] players1) {
+        this.players = players1;
     }
-    public Moviedb getMovie() {
-        return allMovies;
+    public MovieDatabase getMovie() {
+        return moviesDatabase;
     }
-    public void setMovie(final Moviedb movie1) {
-        this.allMovies = movie1;
+    public void setMovie(final MovieDatabase moviesDatabase1) {
+        this.moviesDatabase = moviesDatabase1;
     }
-    private String selectLevel() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("1 : Easy \n 2 : Medium \n 3 : Hard \n 4 : Random \n ");
-        System.out.println("Enter the level");
-        int level;
-        String choice = "";
+    Hangman(final int numberOfPlayers) {
+        players = new Player[numberOfPlayers];
+        moviesDatabase = new MovieDatabase();
+    }
+    private String pickLevel() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println(" \n 1 : easy \n 2 : medium \n "
+                        +
+                        " 3 : Hard \n 4 : computer \n "
+                        +
+                        " enter a level number only. ");
+        int levelChoice;
+        String choosenLevel = "";
+        final int three = 3;
+        final int four = 4;
         try {
-            if (sc.hasNext()) {
-                level = sc.nextInt();
+            if (scan.hasNext()) {
+                levelChoice = scan.nextInt();
             } else {
-                System.out.println("wrong input");
-                System.out.println("Enter the Valid input in the range from 1 to 4 ");
+                System.out.println(" wrong input...default level is medium ");
+                return "medium";
+                // levelChoice = 2;
             }
-            switch (level) {
-                case 1:choice = "easy";
+            switch (levelChoice) {
+                case 1:choosenLevel = "easy";
                 break;
-                case 2:choice = "medium";
+                case 2:choosenLevel = "medium";
                 break;
-                case 3:choice = "hard";
+                case three:choosenLevel = "hard";
                 break;
-                case 4: int randomLevel = (int) (Math.random() * 3) + 1;
+                case four: int randomLevel = (int) (Math.random() * three) + 1;
                     switch (randomLevel) {
-                        case 1:choice = "easy";
+                        case 1:choosenLevel = "easy";
                         break;
-                        case 2:choice = "medium";
+                        case 2:choosenLevel = "medium";
                         break;
-                        case 3:choice = "hard";
+                        case three:choosenLevel = "hard";
                         break;
                         default:
                         break;
                     }
                 break;
-                default : choice = "medium";
+                default : choosenLevel = "medium";
             }
-            System.out.println(" selected level is " + choice);
-            return choice;
-        }
-        catch (InputMismatchException e) {
-            System.out.println("wrong input");
-            System.out.println("Enter the Valid input in the range from 1 to 4 "); 
+            System.out.println(" selected level is " + choosenLevel);
+            return choosenLevel;
+        } catch (InputMismatchException e) {
+            System.out.println("wrong input...default level is medium ");
+            return "medium";
         }
     }
-    public void setDeatils (final string[] details) {
-        for (int i = 0; i < details.length; i = i + 4) {
+    public void setDetails(final String[] details) {
+        //create MoviesInfo object
+        final int three = 3;
+        final int four = 4;
+        for (int i = 0; i < details.length; i = i + four) {
             String movieName = details[i].toLowerCase();
             String level = details[i + 1].toLowerCase();
-            String[] hint = {details[i + 2],details[i + 3] };
-            Movie movie = new Movie(movieName, level, hint);
+            String production = details[i + 2];
+            String cast = details[i + three];
+            Movie movie = new Movie(movieName, level, production, cast);
             if (level.equals("easy")) {
-                this.allMovies.setEasy(movie);
+                this.moviesDatabase.setEasyMovies(movie);
             } else if (level.equals("medium")) {
-                this.allMovies.setMedium(movie);
+                this.moviesDatabase.setMediumMovies(movie);
             } else if (level.equals("hard")) {
-                this.allMovies.setHard(movie);
+                this.moviesDatabase.setHardMovies(movie);
             }
         }
     }
     private ArrayList<Movie> getDetails(final String choosenLevel) {
         if (choosenLevel.equals("easy")) {
-               return this.allMovies.getEasy();
+               return this.moviesDatabase.getEasyMovies();
         } else if (choosenLevel.equals("medium")) {
-            return this.allMovies.getMedium();
+            return this.moviesDatabase.getMediumMovies();
         } else if (choosenLevel.equals("hard")) {
-            return this.allMovies.getHard();
+            return this.moviesDatabase.getHardMovies();
+        } else {
+            return this.moviesDatabase.getMediumMovies();
         }
     }
     private Movie selectRandomMovie(final ArrayList<Movie> levelMovies) {
@@ -100,7 +102,7 @@ public class Hangman {
         Movie randomMovie = levelMovies.get(randomIndex);
         return randomMovie;
     }
-    private String input() {
+    private String takeInput() {
         Scanner scan = new Scanner(System.in);
         System.out.println("enter a character or hint ");
         String guess = "";
@@ -113,8 +115,8 @@ public class Hangman {
             return guess;
         }
         if (guess.length() != 1) {
-            System.out.println(" Enter only a single alphabet");
-            return "one character";
+            System.out.println(" enter only a alphabet of length 1 ");
+            return "oneCharacterOnly";
         }
         int ascii = (int) (guess.charAt(0));
         final int start = 97;
@@ -126,7 +128,8 @@ public class Hangman {
             return "alphabetsOnly";
         }
     }
-    private boolean isAlreadyGuessed(final String alreadyGuessed,final String guess) {
+    private boolean isAlreadyGuessed(final String alreadyGuessed,
+            final String guess) {
         int flag = alreadyGuessed.indexOf(guess);
         if (flag == -1) {
             return false;
@@ -140,7 +143,7 @@ public class Hangman {
         }
         return temp;
     }
-    private String tostring(final String[] form) {
+    private String arrToStr(final String[] form) {
         String temp = "";
         for (int i = 0; i < form.length; i++) {
             temp = temp + form[i] + " ";
@@ -155,7 +158,9 @@ public class Hangman {
         }
         return true;
     }
-    private int getFrequency(final String randomMovieName,final String guess,final String[] guessedMovieName) {
+    private int getFrequency(final String randomMovieName,
+            final String guess,
+            final String[] guessedMovieName) {
         int frequency = 0;
         for (int i = 0; i < randomMovieName.length(); i++) {
             if (Character.toString(randomMovieName.charAt(i)).equals(guess)
@@ -206,7 +211,7 @@ public class Hangman {
         System.out.println(" alphabetsGuessed = "
             + this.format(alphabetsGuessed));
         System.out.println(" guessedMovieName = "
-            + this.tostring(guessedMovieName));
+            + this.arrToStr(guessedMovieName));
     }
     private String[] putRandomChars(final String movieName,
                 final String[] guessedMovieName) {
@@ -346,3 +351,4 @@ public class Hangman {
         }
     }
 }
+
