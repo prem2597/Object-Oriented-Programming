@@ -1,9 +1,9 @@
 import java.util.ArrayList;
-class MovieDb {
+class Moviedb {
     private ArrayList<Movie> easyMovies;
     private ArrayList<Movie> mediumMovies;
     private ArrayList<Movie> hardMovies;
-    MovieDb() {
+    Moviedb() {
         easyMovies = new ArrayList<>();
         mediumMovies = new ArrayList<>();
         hardMovies = new ArrayList<>();

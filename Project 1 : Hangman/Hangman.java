@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 class Hangman {
-    private MovieDatabase moviesDatabase;
+    private Moviedb moviesDatabase;
     private Player[] players;
     public Player[] getPlayers() {
         return players;
@@ -10,15 +10,15 @@ class Hangman {
     public void setPlayers(final Player[] players1) {
         this.players = players1;
     }
-    public MovieDatabase getMovie() {
+    public Moviedb getMovie() {
         return moviesDatabase;
     }
-    public void setMovie(final MovieDatabase moviesDatabase1) {
+    public void setMovie(final Moviedb moviesDatabase1) {
         this.moviesDatabase = moviesDatabase1;
     }
     Hangman(final int numberOfPlayers) {
         players = new Player[numberOfPlayers];
-        moviesDatabase = new MovieDatabase();
+        moviesDatabase = new Moviedb();
     }
     private String pickLevel() {
         Scanner scan = new Scanner(System.in);
@@ -352,4 +352,3 @@ class Hangman {
     }
     
 }
-
