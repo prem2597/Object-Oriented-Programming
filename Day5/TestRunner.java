@@ -1,11 +1,14 @@
-public class TestRunner{
-	public static void main(String[] args) throws Exception {
+public class TestRunner {
+	public static void main(final String[] args) throws Exception {
 		DoList obj = new DoList();
-		obj.addTask(new ToDoList("task1", "desc1", "24/09/2019", "incomplete"));
-		obj.addTask(new ToDoList("task2", "desc2", "23/09/2019", "in process"));
-		obj.addTask(new ToDoList("task3", "desc3", "23/09/2019", "in process"));
-		obj.addTask(new ToDoList("task4", "desc4", "11/11/2019", "incomplete"));
-
+		obj.addTask(new ToDoList("task1", "desc1",
+		"24/09/2019", "incomplete"));
+		obj.addTask(new ToDoList("task2", "desc2",
+		"23/09/2019", "in process"));
+		obj.addTask(new ToDoList("task3",
+		"desc3", "23/09/2019", "in process"));
+		obj.addTask(new ToDoList("task4", "desc4",
+		"11/11/2019", "incomplete"));
 		System.out.println("Finding a task by name");
 		obj.findTask("task2");
 		System.out.println("\n Updating a task: task3");

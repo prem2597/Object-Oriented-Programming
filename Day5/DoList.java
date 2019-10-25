@@ -1,8 +1,17 @@
 import java.util.Date;
 import java.text.SimpleDateFormat;
 class DoList {
+    /**
+     * ten = 10.
+     */
     private final int ten = 10;
+    /**
+     * tasks to be done of todolist type.
+     */
     private ToDoList[] tasks = new ToDoList[ten];
+    /**
+     * taskcount represents number of task to be done.
+     */
     private int taskCount = 0;
     public void addTask(final ToDoList task) {
         tasks[taskCount] = task;
