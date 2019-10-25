@@ -30,18 +30,24 @@ public final class Main {
         return null;
     }
     public static void main(String[] args) {
-        System.out.println(" enter the number of players ");
-        int numberOfPlayers = 2 + 2;
+        System.out.println("Welcome to Hangman");
+        System.out.println("😃😃😃");
+        System.out.println(" Enter the number of players ");
+        int numberOfPlayers = 1;
         Scanner sc = new Scanner(System.in);
         try {
             if (sc.hasNext()) {
                 numberOfPlayers = sc.nextInt();
             }
         } catch (InputMismatchException is) {
-            System.out.println("wrong input...default number of players is 4 ");
+            System.out.println("Wrong Input ....");
+            System.out.println("Number of players must be a number...!!!!");
+            System.out.println("Default number of players 1");
+            System.out.println("---------------------------------------------");
         }
         try {
-            System.out.println(" number of players " + numberOfPlayers);
+            System.out.println(" Number of Players" + numberOfPlayers);
+            System.out.println("---------------------------------------------");
             String[] fileContents = readFile("movies.txt");
             if (fileContents == null) {
                 throw new NullPointerException();
@@ -49,8 +55,8 @@ public final class Main {
             Hangman hangman = new Hangman(numberOfPlayers);
             hangman.setDetails(fileContents);
             hangman.readPlayerDetails(numberOfPlayers);
-            for (int current = 0; current < numberOfPlayers; current++) {
-                hangman.playHangman(current);
+            for (int i = 0; i < numberOfPlayers; i++) {
+                hangman.playHangman(i);
             }
             hangman.leaderBoard();
         } catch (Exception e) {

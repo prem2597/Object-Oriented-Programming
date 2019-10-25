@@ -1,25 +1,25 @@
 class Player {
-    private String playerName;
-    private int playerScore;
+    private String name;
+    private int score;
 
     Player(final String playerName1, final int playerScore1) {
-        this.playerName = playerName1;
-        this.playerScore = playerScore1;
+        this.name = playerName1;
+        this.score = playerScore1;
     }
 
     public String getPlayerName() {
-        return playerName;
+        return name;
     }
 
     public void setPlayerName(final String playerName1) {
-        this.playerName = playerName1;
+        this.name = playerName1;
     }
 
     public int getPlayerScore() {
-        return playerScore;
+        return score;
     }
 
     public void setPlayerScore(final int playerScore1) {
-        this.playerScore = playerScore1;
+        this.score = playerScore1;
     }
 }

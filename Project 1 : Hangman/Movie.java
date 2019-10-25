@@ -1,15 +1,15 @@
 class Movie {
     private String movieName;
     private String level;
-    private String production;
-    private String cast;
+    private String hint1;
+    private String hint2;
 
     Movie(final String movieName1, final String level1,
-            final String production1, final String cast1) {
+            final String hints1, final String hints2) {
         this.movieName = movieName1;
         this.level = level1;
-        this.production = production1;
-        this.cast = cast1;
+        this.hint1 = hints1;
+        this.hint2 = hints2;
     }
     public String getMovieName() {
             return movieName;
@@ -27,20 +27,20 @@ class Movie {
         this.level = level1;
     }
 
-    public String getProduction() {
-        return production;
+    public String getHint1() {
+        return hint1;
     }
 
-    public void setProduction(final String production1) {
-        this.production = production1;
+    public void setHint1(final String hints1) {
+        this.hint1 = hints1;
     }
 
-    public String getCast() {
-        return cast;
+    public String getHint2() {
+        return hint2;
     }
 
-    public void setCast(final String cast1) {
-        this.cast = cast1;
+    public void setHint2(final String hints2) {
+        this.hint2 = hints2;
     }
 
 }
