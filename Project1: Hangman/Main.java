@@ -7,14 +7,12 @@ public final class Main {
     private Main() {
     }
     private static String[] readFile(final String fileName)
-    throws FileNotFoundException
-    {
+    throws FileNotFoundException {
     try {
         File file = new File(fileName);
         Scanner scan = new Scanner(file);
         ArrayList<String> lines = new ArrayList<String>();
-        while (scan.hasNextLine())
-        {
+        while (scan.hasNextLine()) {
             String temp = scan.nextLine();
             if (temp.length() != 0) {
                 lines.add(temp);
@@ -22,14 +20,16 @@ public final class Main {
         }
         String[] fileContents = lines.toArray(new String[lines.size()]);
         return fileContents;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return null;
     }
-    public static void main(String[] args) {
+    /**
+     * Main method to start the program.
+     * @param args type
+     */
+    public static void main(final String[] args) {
         System.out.println("Welcome to Hangman");
         System.out.println("😃😃😃");
         System.out.println(" Enter the number of players ");
