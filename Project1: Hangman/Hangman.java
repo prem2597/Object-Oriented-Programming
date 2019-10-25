@@ -411,7 +411,8 @@ class Hangman {
                 + ":  PlayerScore " + players[i].getPlayerScore());
         }
         System.out.println("Game Over !");
-        System.out.println("Congratulations  " + "''" + players[0].getPlayerName() + "''");
+        System.out.println("Congratulations  "
+        + "''" + players[0].getPlayerName() + "''");
         System.out.println("👍👍👍");
     }
 }
