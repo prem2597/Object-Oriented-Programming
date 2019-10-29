@@ -1,13 +1,26 @@
+/**
+ * List Data Type. Write a data type List.java that
+ * represents an listay of homogeneous elements. 
+ * Implement the following public API which can be 
+ * used as an API for the rest of your course.
+ * 
+ * @author Praveen Garimella
+ * @author Siva Sankar
+ * @author Jagan
+ * 
+ * @since August - 2018
+ */
+
 import java.util.Arrays;
 
-public abstract class AbstractList<E extends Comparable<E>> implements ListInterface<E> {
+public abstract class Abstractlist<E extends Comparable<E>> implements ListInterface<E>  {
     // Implement all the methods mentioned to build a ListADT and 
     // OrderedList ADT
 
     /*
      * The goal for the list is to store items.
      * How are we going to store the items in the list?
-     * An listay would be good. Right?
+     * An listarray would be good. Right?
      * So, assume we are only going to have ints in the list
      * We need to create an listay of ints to store the items
      * added to the list.
@@ -54,14 +67,14 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
     // again, don't initialize it here
     // variable initialization should be done in the constructor
 
-    E[] elements = (E[]) new Comparable[0];
+    public E[] list;
     public int size;
 
     /*
      * The purpose of the constructor is to initialize the
      * class variables with some default values.
      */
-    public AbstractList() {
+    public Abstractlist() {
 
         // what are the two variables to be initialized here?
         // think about the private variables described above.
@@ -73,7 +86,7 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
         // How many items do we have in the list when you create it?
         // An empty list has how many items?
         // That is the initial value to use for size.
-        list = new int[10];
+        list = (E[]) new Comparable[10];
         size = 0;
     }
     
@@ -91,9 +104,9 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
      * constructor.
      * 
      */
-    public AbstractList(int capacity) {
+    public Abstractlist(int capacity) {
         size = 0;
-        list = new int[capacity];
+        list = (E[]) new Comparable[capacity];
     }
     
     /*
@@ -107,46 +120,10 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
      * 
      * The method returns void (nothing)
      */
-    public void add(int item) {
+    public void add(E item) {
         //Inserts the specified element at the end of the list.
         // TODO
         // Your code goes here.
-        
-    }
-
-    /**
-     * Given an index and an item, adds this item at a particular index.
-     * 
-     * Example:
-     * 
-     * Let's say for example the List object contains : [5,-2,3,1,6,-1]
-     * 
-     * Input : add(1, 2)
-     * First Move all the elements to the right by one upto the given index. So, you
-     * will be having a gap at the given index where you can insert a new element / item
-     * that is passed as parameter.
-     * Output : [5,2,-2,3,1,6,-1]
-     * 
-     * Can you think of the following works:
-     * Let's say for example the List object contains : [5,-2,3,1,6,-1]
-     * Input: add(20, 2) : As there are 6 elements, you can't insert an element / item
-     * after 6th index.
-     * 
-     * Output: [5,2,-2,3,1,6,-1]
-     * 
-     * Think of on which object this method can be called. List / OrderedList and etc.
-     */
-    public final void add(int index, int item) {
-        // TODO
-        // Your code goes here.
-        if(index >= 0 && index <= size) {
-            for(int i = size; i>=index; i--) {
-                list[i+1] = list[i];
-            }
-            list[index] = item;
-            size = size + 1;
-        }
-        
     }
 
     /**
@@ -156,10 +133,9 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
      * 
      * @param lst list containing elements to be added to this list.
      */
-    public void addAll(List lst) {
+    public void addAll(Set<E> lst) {
         // TODO
         // Your code goes here.
-        
     }
 
     /**
@@ -167,10 +143,9 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
      * @param arr is an array of items that should be added to 
      * this list.
      */
-    public void addAll(int[] arr ){
+    public void addAll(E[] arr ){
         // TODO
         // Your code goes here.
-        
     }
 
     /*
@@ -184,8 +159,7 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
         // replace the code below to implement the size method
         // TODO
         // Your code goes here.
-        
-        return size;
+        return this.size;
     }
 
     /**
@@ -195,6 +169,7 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
         // TODO
         // Your code goes here.
         list = Arrays.copyOf(list, list.length*2);
+        
     }
 
     /*
@@ -222,12 +197,14 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
         // Think about what to do to the size variable.
         // TODO
         // Your code goes here.
-        if (index < size) {
-            for (int i = index; i<size; i++) {
+        if (this.size > index) {
+            for(int i =index;i<this.size;i++) {
                 list[i] = list[i+1];
             }
-            list[size - 1] = 0;
-            size = size - 1;
+            list[this.size] = null;
+            this.size--;
+        } else {
+            System.out.println("Index is out of bound");
         }
     }
 
@@ -242,17 +219,14 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
      * How do we check if the position is greater than the 
      * number of items in the list? Would size variable be useful?
      */
-    public int get(int index) {
+    public E get(int index) {
         // Replace the code below to write the code for get
         // TODO
         // Your code goes here.
-        if (index < size && index >= 0) {
+        if (this.size > index && index >= 0)
             return list[index];
-        }
-        else {
-            return -1;
-        }
-        // return -1;
+        else 
+            return null;
     }
 
     /*
@@ -292,16 +266,14 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
      * So, iterate through the list and return true if
      * the item exists and otherwise false
      */
-    public boolean contains(int item) {
+    public boolean contains(E item) {
         // TODO
         // Your code goes here.
-        for ( int i=0;i<size ;i++) {
-            if (list[i] == item) {
+        for (int i = 0; i< size; i++) {
+            if (item.compareTo(list[i]) == 0) {
                 return true;
             }
-
         }
-        
         return false;
     }
 
@@ -309,10 +281,15 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
      * Returns the index of the first occurrence of the specified element in this list,
      * or -1 if this list does not contain the element.
      */
-    public int indexOf(int item) {
+    public int indexOf(E item) {
         // TODO
         // Your code goes here.
 
+        for(int i = 0; i < this.size;i++) {
+            if(list[i] == item){
+                return i;
+            }
+        }
         return -1;
     }
 
@@ -327,18 +304,13 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
     public int lastIndexOf(int item) {
         // TODO
         // Your code goes here.
-        int flag = 0, s = 0;
-        for ( int i = 0;i<size;i++) {
-            if (list[i] == item) {
-                flag = 1;
-                s = i;
+        int lastOccurence = -1;
+        for(int i = 0;i < this.size;i++ ) {
+            if(list[i] == item) {
+                lastOccurence = i;
             }
         }
-        if (flag ==1) {
-            return s;
-        } else {
-            return -1;
-        }
+        return lastOccurence;
     }
 
     /**
@@ -350,14 +322,12 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
         // TODO
         // Your code goes here.
         int count = 0;
-        for (int i=0;i<size ; i++) {
-            if(list[i] == item) {
-                count = count + 1;
-            }
+        for(int i = 0;i < this.size;i++ ) {
+            if(list[i] == item)
+            count ++;
         }
-        
         return count;
-    } 
+    }
 
     /**
      * Returns a view of the portion of this list between the specified fromIndex, 
@@ -372,18 +342,16 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
     public List subList(int fromIndex, int toIndex) {
         // TODO
         // Your code goes here.
-        List sublist = new List();
-        if (fromIndex == toIndex || toIndex < 0 || fromIndex<0) {
-            return null;
-        }
-        else if(fromIndex >= 0 && toIndex >= 0) {
-            for (int i = fromIndex ; i < toIndex ; i++) {
-                sublist.list[sublist.size] = list[i];
-                sublist.size = sublist.size + 1;
+        // List seconList = new List(toIndex - fromIndex);
+        if (toIndex > fromIndex && fromIndex >= 0) {
+            // List l = new AbstractList(toIndex - fromIndex);
+            List l = new List(toIndex - fromIndex);
+            for (int i = fromIndex; i < toIndex && i < size; i++) {
+                l.add(list[i]);
             }
-        }
-        
-        return sublist;
+            return l;
+          }
+          return null;
     }
 
     /**
@@ -396,7 +364,7 @@ public abstract class AbstractList<E extends Comparable<E>> implements ListInter
     public void set(int index, int item) {
         // TODO
         // Your code goes here.
-        if(index <= size) {
+        if (index < size && index >= 0) {
             list[index] = item;
         }
     }

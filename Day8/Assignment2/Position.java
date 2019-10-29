@@ -1,9 +1,13 @@
-class Position {
-    int row;
-    int column;
-    // Constructor using row and column values.
-    Position(int r, int c) {
-    this.row = r;
-    this.column = c;
-    }
+class Position{
+int row;
+int column;
+Position(){
+	this.row = 0;
+	this.column = 0;
+
+}
+Position(int row, int col){
+	this.row = row;
+	this.column = col;
+}
 }
