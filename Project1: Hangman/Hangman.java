@@ -391,7 +391,7 @@ class Hangman {
                     System.out.println(" letter already guessed ");
                 }
             }
-            if (!hintTaken) {
+            if (!hintTaken && numberOfLettersLeft == 0 ) {
                 playerScore = playerScore + m;
             }
             this.players[current].setPlayerScore(playerScore);

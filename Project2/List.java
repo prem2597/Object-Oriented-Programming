@@ -1,3 +1,8 @@
+/**
+ * @author Prem
+ * @param <E>
+ */
+
 class List<E extends Comparable<E>> extends AbstractList<E> {
     /**
     * The add method does what the name suggests.
@@ -12,8 +17,8 @@ class List<E extends Comparable<E>> extends AbstractList<E> {
     */
     public void add(final E item) {
         this.reSize();
-        this.elements[this.size] = item;
-        this.size = this.size + 1;
+        elements[this.size] = item;
+        size++;
     }
 
      /**
@@ -61,14 +66,14 @@ class List<E extends Comparable<E>> extends AbstractList<E> {
      */
     public void add(final int index, final E item)
         throws InvalidIndexException {
-        if (index > this.size || index < 0) {
-            throw new InvalidIndexException("index error");
+        if (index > size || index < 0) {
+            throw new InvalidIndexException("Invalid index");
         }
         this.reSize();
-        E temp = this.elements[index];
-        for (int i = index + 1; i < this.size; i++) {
-            this.elements[i] = temp;
-            temp = this.elements[i + 1];
+        E temp = elements[index];
+        for (int i = index + 1; i < size; i++) {
+            elements[i] = temp;
+            temp = elements[i + 1];
         }
     }
 }

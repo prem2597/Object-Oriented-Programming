@@ -1,3 +1,7 @@
+/**
+ * 
+ * @author Prem
+ */
 public class InvalidIndexException extends Exception {
 
     public static final long serialVersionUID = 1L;
