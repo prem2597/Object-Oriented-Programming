@@ -1,5 +1,4 @@
-class Set<E extends Comparable<E>> extends AbstractSet<E> {
-
+class OrderedSet<E extends Comparable<E>> extends AbstractSet<E> {
     /**
     * The add method does what the name suggests.
     * Add an int item to the array.
@@ -9,19 +8,36 @@ class Set<E extends Comparable<E>> extends AbstractSet<E> {
     * @param item element to be added.
     */
     public void add(final E item) {
-        boolean notPresent = true;
+        int position = -1;
+        E temp = null;
+        if (this.size == 0) {
+            this.reSize();
+            this.elements[this.size] = item;
+            this.size = this.size + 1;
+            return;
+        }
+
         for (int i = 0; i < this.size; i++) {
-            if (item.compareTo(this.elements[i]) == 0) {
-                notPresent = false;
+            if (item.compareTo(this.elements[i]) <= 0) {
+                temp = this.elements[i];
+                position = i;
                 break;
             }
         }
-        if (notPresent) {
+        if (position != -1) {
+            this.reSize();
+            for (int i = this.size; i > position; i--) {
+                this.elements[i] = this.elements[i - 1];
+            }
+            this.elements[position] = item;
+            this.size = this.size + 1;
+        } else {
             this.reSize();
             this.elements[this.size] = item;
             this.size = this.size + 1;
         }
     }
+    
     /**
     * The add method does what the name suggests.
     * Add an all the elemennts of list type E to the array.
@@ -32,8 +48,7 @@ class Set<E extends Comparable<E>> extends AbstractSet<E> {
     * @exception InvalidIndexException when unbale to get an element of list
     */
     public void addAll(final List<E> lst) throws InvalidIndexException {
-        int lstLen = lst.size();
-        for (int i = 0; i < lstLen; i++) {
+        for (int i = 0; i < lst.size(); i++) {
             this.add(lst.get(i));
         }
     }
