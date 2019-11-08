@@ -1,20 +1,45 @@
+import java.util.*;
 /**
  * @author Prem
  */
 class Player {
+    /**
+     * player name.
+     */
     private String playerName;
+    /**
+     * number of chances.
+     */
     private int numberOfChances;
+    /**
+     * gamewon or not.
+     */
     private boolean gameWon = false;
+    /**
+     * player position.
+     */
     private int playerPosition;
 
+    /**
+     * gets the value of player name.
+     * @return player name
+     */
     public String getPlayerName() {
         return playerName;
     }
 
+    /**
+     * set the value of playername.
+     * @param playerName1
+     */
     public void setPlayerName(final String playerName1) {
         this.playerName = playerName1;
     }
 
+    /**
+     * number of chances.
+     * @return number of chances
+     */
     public int getNumberOfChances() {
         return numberOfChances;
     }

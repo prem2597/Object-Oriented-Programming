@@ -1,8 +1,8 @@
-/**
- * @author Prem
- */
 import java.util.ArrayList;
 import java.util.Scanner;
+/**
+ * @author PREM
+ */
 class Game {
     private int[][] board;
     private Player[] players;
@@ -117,7 +117,7 @@ class Game {
     }
 
     void printCurrentPostion(final int i) {
-        System.out.println(" current postion of "
+        System.out.println(" Present postion of "
                 + this.getPlayers()[i].getPlayerName() + " is "
                 + this.getPlayers()[i].getPlayerPosition());
     }
@@ -159,9 +159,10 @@ class Game {
 
     boolean isChanceTakenAgain() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("do you want to take turn again ?\n YES or NO");
+        System.out.println("do you want to take turn again ?\n YES(Y) or NO(N)");
         String input = scan.next().toLowerCase();
-        if (input.equals("yes")) {
+        if (input.equals("y") || input.equals("Y")
+        || input.equals("YES") || input.equals("yes")) {
             System.out.println("new turn");
             return true;
         }
@@ -197,7 +198,7 @@ class Game {
                 return true;
             case 0:
                 this.getPlayers()[i].setPlayerPosition(tempPos);
-                System.out.println("normal !!!");
+                System.out.println(" Safe Cool !!!");
                 return true;
             default:
                 break;
@@ -239,7 +240,7 @@ class Game {
     public static void main(final String[] args) {
 
         Scanner scan = new Scanner(System.in);
-        system.out.println("Welcome to Snakes & Ladders");
+        System.out.println("Welcome to Snakes & Ladders");
         System.out.println("🐍🐍🐍");
         System.out.println(" Enter the Number of players :");
         boolean check = true;
@@ -276,11 +277,12 @@ class Game {
                 }
             }
         }
-
+        System.out.println("Congratualtions..!!!");
         System.out.println(" total number of chances taken for winning ");
         for (int i = 0; i < numberOfPlayers; i++) {
             System.out.println(" name = " + players[i].getPlayerName()
             + " " + " chances = " + players[i].getNumberOfChances());
         }
+        // System.out.println("Congratulations Mr." + players[i].getPlayerName());
     }
 }
