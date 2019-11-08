@@ -1,4 +1,6 @@
+import java.util.*;
 /**
+ * Snake implementation.
  * @author Prem
  */
 class Snake {

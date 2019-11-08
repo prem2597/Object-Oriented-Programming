@@ -247,7 +247,7 @@ abstract class AbstractList<E extends Comparable<E>> implements ListInterface<E>
         str.append(elements[size] + "]");
         return str.toString();
     }
-    public void add(final E item) { }
+    public void add(final E item) {}
     public void addAll(final E[] items) {}
     public void addAll(final List<E> lst) throws InvalidIndexException {}
     public void add(final int index, final E item) throws InvalidIndexException {}
