@@ -48,8 +48,10 @@ class Game {
     }
 
     void createSnakes() {
-        final int[] snakeStart = {43, 55, 70, 78, 95, 96};
-        final int[] snakeEnd = {16, 34, 48, 42, 73, 82};
+        // final int[] snakeStart = {43, 55, 70, 78, 95, 96};
+        // final int[] snakeEnd = {16, 34, 48, 42, 73, 82};
+        final int[] snakeStart= {};
+        final int[] snakeEnd = {};
         int numOfSnakes = snakeStart.length;
         for (int i = 0; i < numOfSnakes; i++) {
             snakes.add(new Snake(snakeStart[i], snakeEnd[i]));
@@ -57,8 +59,10 @@ class Game {
     }
 
     void createLadders() {
-        final int[] ladderStart = {6, 9, 20, 25, 53, 54, 61};
-        final int[] ladderEnd = {27, 50, 39, 57, 72, 85, 82};
+        // final int[] ladderStart = {6, 9, 20, 25, 53, 54, 61};
+        // final int[] ladderEnd = {27, 50, 39, 57, 72, 85, 82};
+        final int[] ladderStart = {};
+        final int[] ladderEnd = {};
         int numOfLadders = ladderEnd.length;
         for (int i = 0; i < numOfLadders; i++) {
             ladders.add(new Ladder(ladderStart[i], ladderEnd[i]));
@@ -138,9 +142,9 @@ class Game {
     }
 
     int rollDice() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("enter something to roll");
-        sc.nextLine();
+        // Scanner sc = new Scanner(System.in);
+        // System.out.println("enter something to roll");
+        // sc.nextLine();
         final int maxOnDice = 6;
         int valueOnDice = (int) ((Math.random() * maxOnDice) + 1);
         System.out.println(" value on dice = " + valueOnDice);
@@ -158,14 +162,14 @@ class Game {
     }
 
     boolean isChanceTakenAgain() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("do you want to take turn again ?\n YES(Y) or NO(N)");
-        String input = scan.next().toLowerCase();
-        if (input.equals("y") || input.equals("Y")
-        || input.equals("YES") || input.equals("yes")) {
-            System.out.println("new turn");
-            return true;
-        }
+        // Scanner scan = new Scanner(System.in);
+        // System.out.println("do you want to take turn again ?\n YES(Y) or NO(N)");
+        // String input = scan.next().toLowerCase();
+        // if (input.equals("y") || input.equals("Y")
+        // || input.equals("YES") || input.equals("yes")) {
+        //     System.out.println("new turn");
+        //     return true;
+        // }
         return false;
     }
 
