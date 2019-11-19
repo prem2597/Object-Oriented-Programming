@@ -30,6 +30,9 @@ public interface SetInterface<E extends Comparable<E>> {
      * @exception InvalidIndexException when index is notvalid.
      * @return type E.
      */
+    * The add method does what the name suggests.
+    * Add an int item to the array.
+    * The assumption is to store the item at the end
     E get(int index) throws InvalidIndexException;
 
     /**
