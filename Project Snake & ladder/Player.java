@@ -63,7 +63,6 @@ class Player {
     public void setPlayerPosition(final int playerPosition1) {
         this.playerPosition = playerPosition1;
     }
-
     Player (final String playerName1, final int playerPosition1,
         final int numberOfChances1, final boolean gameWon1) {
             this.playerName = playerName1;
