@@ -23,16 +23,16 @@ public interface SetInterface<E extends Comparable<E>> {
      */
     void addAll(E[] e);
 
-    /**
-     * returns the element at the index.
-     * returns element of type E.
-     * @param index element.
-     * @exception InvalidIndexException when index is notvalid.
-     * @return type E.
-     */
-    * The add method does what the name suggests.
-    * Add an int item to the array.
-    * The assumption is to store the item at the end
+    // /**
+    //  * returns the element at the index.
+    //  * returns element of type E.
+    //  * @param index element.
+    //  * @exception InvalidIndexException when index is notvalid.
+    //  * @return type E.
+    //  */
+    // */ The add method does what the name suggests.
+    // * Add an int item to the array.
+    // * The assumption is to store the item at the end
     E get(int index) throws InvalidIndexException;
 
     /**
